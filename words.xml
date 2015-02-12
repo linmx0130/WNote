@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<wnote>
+	<node>
+		<word>apple</word>
+		<explanation>n.苹果</explanation>
+	</node>
+	<node>
+		<word>abandon</word>
+		<explanation>v.放弃</explanation>
+	</node>
+</wnote>
