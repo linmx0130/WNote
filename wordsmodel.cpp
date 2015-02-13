@@ -93,6 +93,32 @@ WordNode* WordsModel::readWord(){
     return ret;
 }
 
+bool WordsModel::writeFile(const QString &filename){
+    QFile file(filename);
+    if (!file.open(QFile::WriteOnly | QFile::Text)){
+        std::cerr << "Error: can't open file " << qPrintable(filename) <<"!" <<std::endl;
+        return false;
+    }
+    QXmlStreamWriter xmlWriter(&file);
+    xmlWriter.setAutoFormatting(true);
+    xmlWriter.writeStartDocument();
+    xmlWriter.writeStartElement("wnote");
+    for (int i = 0 ;i < wordList.size();++i){
+        xmlWriter.writeStartElement("node");
+        xmlWriter.writeTextElement("word",wordList[i]->getWord());
+        xmlWriter.writeTextElement("explanation",wordList[i]->getExplanation());
+        xmlWriter.writeEndElement();
+    }
+    xmlWriter.writeEndElement();
+    xmlWriter.writeEndDocument();
+    file.close();
+    if (file.error()){
+        std::cerr << "Error: can't write file " << qPrintable(filename) <<"!" <<std::endl;
+        return false;
+    }
+    return true;
+}
+
 WordNode::WordNode(const QString &w, const QString &e):word(w),explanation(e){};
 WordNode::WordNode(){
     WordNode("","");

@@ -34,6 +34,7 @@ class WordsModel : public QObject
 public:
     explicit WordsModel(QObject *parent = 0);
     bool readFile(const QString &filename);
+    bool writeFile(const QString &filename);
     QVector<WordNode *>& getWordList();
 
 signals:

@@ -44,5 +44,7 @@ void AddWordForm::saveWord(){
     QString e=this->explanationTE->text();
     WordNode *t=new WordNode(w,e);
     wnote::wm.getWordList().append(t);
+    wnote::wm.writeFile("words.xml");
+    this->close();
 }
 extern WordsModel wm;

@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "recitewordsform.h"
 MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent)
 {
@@ -11,10 +12,15 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle("WNote");
     wnote::wm.readFile("words.xml");
     connect(addWordBtn,SIGNAL(clicked()),this,SLOT(addWordFormShow()));
+    connect(readWordBtn,SIGNAL(clicked()),this,SLOT(reciteWordFormShow()));
 }
 
 void MainWindow::addWordFormShow(){
     AddWordForm *f=new AddWordForm();
+    f->show();
+}
+void MainWindow::reciteWordFormShow(){
+    ReciteWordsForm *f=new ReciteWordsForm();
     f->show();
 }
 

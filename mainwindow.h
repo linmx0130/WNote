@@ -20,7 +20,7 @@ public:
 
 public slots:
     void addWordFormShow();
-
+    void reciteWordFormShow();
 };
 #include "addwordform.h"
 #endif // MAINWINDOW_H

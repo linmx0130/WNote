@@ -16,12 +16,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     wordsmodel.cpp \
     addwordform.cpp \
-    global.cpp
+    global.cpp \
+    recitewordsform.cpp
 
 HEADERS  += mainwindow.h \
     wordsmodel.h \
     addwordform.h \
-    global.h
+    global.h \
+    recitewordsform.h
 
 OTHER_FILES += \
     words.xml
