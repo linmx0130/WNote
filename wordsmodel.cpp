@@ -39,9 +39,6 @@ bool WordsModel::readFile(const QString &filename){
         file.close();
         return false;
     }
-    for (int i=0;i!=wordList.size();++i){
-        std::cout << qPrintable(wordList[i]->getWord()) << ":" << qPrintable(wordList[i]->getExplanation()) << "!\n";
-    }
     file.close();
     return true;
 }

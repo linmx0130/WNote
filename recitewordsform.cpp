@@ -10,6 +10,7 @@ ReciteWordsForm::ReciteWordsForm(QWidget *parent) :
     }
     wordLabel=new QLabel();
     wordLabel->setAlignment(Qt::AlignCenter);
+    wordLabel->setFont(QFont("Sans",25,QFont::Bold));
     explanLabel=new QLabel();
     mainLayout=new QVBoxLayout();
 
@@ -28,6 +29,8 @@ ReciteWordsForm::ReciteWordsForm(QWidget *parent) :
     connect(previousBtn,SIGNAL(clicked()),this,SLOT(previousWord()));
     connect(nextBtn,SIGNAL(clicked()),this,SLOT(nextWord()));
     connect(removeBtn,SIGNAL(clicked()),this,SLOT(removeWord()));
+    setWindowTitle("Recite Words");
+    this->setWindowFlags(this->windowFlags() & ~Qt::WindowMaximizeButtonHint& ~Qt::WindowMinimizeButtonHint );
     setLayout(mainLayout);
     loadWord();
 }
@@ -76,4 +79,9 @@ void ReciteWordsForm::removeWord(){
     }
     wnote::wm.writeFile("words.xml");
     loadWord();
+}
+
+void ReciteWordsForm::closeEvent(QCloseEvent *event){
+    emit closeForm();
+    event->accept();
 }

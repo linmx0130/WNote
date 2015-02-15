@@ -6,6 +6,7 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QPushButton>
+#include <QCloseEvent>
 
 class ReciteWordsForm : public QWidget
 {
@@ -18,9 +19,10 @@ class ReciteWordsForm : public QWidget
     void loadWord();
 public:
     explicit ReciteWordsForm(QWidget *parent = 0);
-
+protected:
+    void closeEvent(QCloseEvent *);
 signals:
-
+    void closeForm();
 public slots:
     void nextWord();
     void previousWord();

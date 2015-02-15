@@ -21,6 +21,7 @@ public:
 public slots:
     void addWordFormShow();
     void reciteWordFormShow();
+    void enableForm();
 };
 #include "addwordform.h"
 #endif // MAINWINDOW_H

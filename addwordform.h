@@ -7,6 +7,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QLineEdit>
+#include <QCloseEvent>
 
 class AddWordForm : public QWidget
 {
@@ -18,8 +19,10 @@ class AddWordForm : public QWidget
     QPushButton *okBtn, *cancelBtn;
 public:
     explicit AddWordForm(QWidget *parent = 0);
+protected:
+    void closeEvent(QCloseEvent *);
 signals:
-
+    void closeForm();
 public slots:
     void saveWord();
 };

@@ -34,7 +34,8 @@ AddWordForm::AddWordForm(QWidget *parent) :
 
     connect(cancelBtn,SIGNAL(clicked()),this,SLOT(close()));
     connect(okBtn,SIGNAL(clicked()),this,SLOT(saveWord()));
-
+    this->setWindowFlags(this->windowFlags() & ~Qt::WindowMaximizeButtonHint& ~Qt::WindowMinimizeButtonHint );
+    setWindowTitle("Add word");
     setSizePolicy(QSizePolicy::Minimum,QSizePolicy::Minimum);
     setLayout(mainLayout);
 }
@@ -47,4 +48,10 @@ void AddWordForm::saveWord(){
     wnote::wm.writeFile("words.xml");
     this->close();
 }
+
+void AddWordForm::closeEvent(QCloseEvent *event){
+    emit closeForm();
+    event->accept();
+}
+
 extern WordsModel wm;
