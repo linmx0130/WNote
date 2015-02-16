@@ -14,6 +14,7 @@ class MainWindow : public QWidget
     Q_OBJECT
     QHBoxLayout *layout;
     QPushButton *addWordBtn, *readWordBtn;
+    QWidget *f;
 public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();

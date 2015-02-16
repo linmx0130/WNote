@@ -5,6 +5,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent)
 {
+    this->f=NULL;
     layout = new QHBoxLayout();
     addWordBtn = new QPushButton(tr("New Word"));
     readWordBtn = new QPushButton(tr("Recite Words"));
@@ -19,14 +20,22 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 void MainWindow::addWordFormShow(){
-    AddWordForm *f=new AddWordForm();
+    if (f!=NULL){
+        delete f;
+        f=NULL;
+    }
+    f=new AddWordForm();
     this->setEnabled(false);
     connect(f,SIGNAL(closeForm()),this,SLOT(enableForm()));
     f->show();
     f-> move ((QApplication::desktop()->width() - f-> width())/2,(QApplication::desktop()->height() - f->height())/2);
 }
 void MainWindow::reciteWordFormShow(){
-    ReciteWordsForm *f=new ReciteWordsForm();
+    if (f!=NULL){
+        delete f;
+        f=NULL;
+    }
+    f=new ReciteWordsForm();
     this->setEnabled(false);
     connect(f,SIGNAL(closeForm()),this,SLOT(enableForm()));
     f->show();
